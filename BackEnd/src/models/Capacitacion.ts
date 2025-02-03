@@ -1,32 +1,31 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db";
 
-const User = sequelize.define(
-  "User",
+const Capacitacion = sequelize.define(
+  "Capacitacion",
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    nombre: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    correo: {
-      type: DataTypes.STRING,
+    description: {
+      type: DataTypes.TEXT,
       allowNull: false,
-      unique: true,
     },
-    contraseña: {
-      type: DataTypes.STRING,
+    type: {
+      type: DataTypes.ENUM("curso", "diplomado"),
       allowNull: false,
     },
   },
   {
-    tableName: "Users",
+    tableName: "Capacitaciones",
     freezeTableName: true,
   }
 );
 
-export { User };
+export { Capacitacion };

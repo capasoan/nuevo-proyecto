@@ -1,32 +1,31 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db";
 
-const User = sequelize.define(
-  "User",
+const Comentario = sequelize.define(
+  "Comentario",
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    nombre: {
-      type: DataTypes.STRING,
+    content: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
-    correo: {
-      type: DataTypes.STRING,
+    userId: {
+      type: DataTypes.UUID,
       allowNull: false,
-      unique: true,
     },
-    contraseña: {
-      type: DataTypes.STRING,
+    lessonId: {
+      type: DataTypes.UUID,
       allowNull: false,
     },
   },
   {
-    tableName: "Users",
+    tableName: "Comentarios",
     freezeTableName: true,
   }
 );
 
-export { User };
+export { Comentario };

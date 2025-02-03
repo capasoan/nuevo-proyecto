@@ -1,32 +1,27 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db";
 
-const User = sequelize.define(
-  "User",
+const Video = sequelize.define(
+  "Video",
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    nombre: {
+    url: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    correo: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    contraseña: {
-      type: DataTypes.STRING,
+    lessonId: {
+      type: DataTypes.UUID,
       allowNull: false,
     },
   },
   {
-    tableName: "Users",
+    tableName: "Videos",
     freezeTableName: true,
   }
 );
 
-export { User };
+export { Video };

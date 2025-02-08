@@ -9,11 +9,11 @@ const Leccion = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    title: {
+    titulo: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    content: {
+    contenido: {
       type: DataTypes.TEXT,
       allowNull: false, // Contenido escrito
     },
@@ -21,7 +21,7 @@ const Leccion = sequelize.define(
       type: DataTypes.STRING, // Enlace a archivos PDF
       allowNull: true,
     },
-    capacitationId: {
+    capacitacionId: {
       type: DataTypes.UUID,
       allowNull: false,
     },

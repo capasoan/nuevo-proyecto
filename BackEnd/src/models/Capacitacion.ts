@@ -9,15 +9,15 @@ const Capacitacion = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    title: {
+    titulo: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    descripcion: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    type: {
+    tipo: {
       type: DataTypes.ENUM("curso", "diplomado"),
       allowNull: false,
     },

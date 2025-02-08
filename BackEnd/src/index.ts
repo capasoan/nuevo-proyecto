@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { sequelize } from "./db";
-import { User } from "./models/User";
+import { Usuario } from "./models/Usuario";
 import { Video } from "./models/Video";
 import { Leccion } from "./models/Leccion";
 import { Comentario } from "./models/Comentario";

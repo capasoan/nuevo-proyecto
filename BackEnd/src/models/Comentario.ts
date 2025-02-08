@@ -9,15 +9,15 @@ const Comentario = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    content: {
+    contenido: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    userId: {
+    UsuarioId: {
       type: DataTypes.UUID,
       allowNull: false,
     },
-    lessonId: {
+    LeccionId: {
       type: DataTypes.UUID,
       allowNull: false,
     },

@@ -22,7 +22,7 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   logging: console.log,
 });
 
-import { User } from "./models/User";
+import { Usuario } from "./models/Usuario";
 import { Capacitacion } from "./models/Capacitacion";
 import { Leccion } from "./models/Leccion";
 import { Comentario } from "./models/Comentario";
@@ -38,8 +38,9 @@ Video.belongsTo(Leccion, { foreignKey: "lessonId" });
 Leccion.hasMany(Comentario, { foreignKey: "lessonId" });
 Comentario.belongsTo(Leccion, { foreignKey: "lessonId" });
 
-User.hasMany(Comentario, { foreignKey: "userId" });
-Comentario.belongsTo(User, { foreignKey: "userId" });
+Usuario.hasMany(Comentario, { foreignKey: "userId" });
+Comentario.belongsTo(Usuario, { foreignKey: "userId" });
+
 sequelize
   .authenticate()
   .then(() => {

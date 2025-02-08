@@ -1,18 +1,30 @@
 import { Router } from "express";
+
 import {
-  getUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser,
-} from "../controllers/userController";
+  crearUsuario,
+  getUsuario,
+  getUsuarioById,
+  descargarUsuario,
+  borrarUsuario,
+} from "../controllers/usuarioController";
 
 const router = Router();
 
-router.get("/users", getUsers);
-router.get("/users/:id", getUserById);
-router.post("/users", createUser);
-router.put("/users/:id", updateUser);
-router.delete("/users/:id", deleteUser);
+//Rutas Usuario
+router.get("/usuarios", getUsuario);
+router.get("/usuario/:id", getUsuarioById);
+router.post("/crearUsuario", crearUsuario);
+router.put("/u/:id", descargarUsuario);
+router.delete("/usuarios/:id", borrarUsuario);
+
+import {
+  crearCapacitaciones,
+  getCapacitaciones,
+} from "../controllers/capacitacionController";
+
+//Rutas Capacitaciones
+router.post("/crearCapacitaciones", crearCapacitaciones);
+router.get("/capacitaciones", getCapacitaciones);
+// router.get("/capacitaciones/:id", getCapacitacionById);
 
 export default router;

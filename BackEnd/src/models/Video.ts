@@ -13,7 +13,7 @@ const Video = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lessonId: {
+    LeccionId: {
       type: DataTypes.UUID,
       allowNull: false,
     },

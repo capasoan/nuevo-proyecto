@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db";
 
-const User = sequelize.define(
-  "User",
+const Usuario = sequelize.define(
+  "Usuario",
   {
     id: {
       type: DataTypes.UUID,
@@ -24,9 +24,9 @@ const User = sequelize.define(
     },
   },
   {
-    tableName: "Users",
+    tableName: "Usuarios",
     freezeTableName: true,
   }
 );
 
-export { User };
+export { Usuario };

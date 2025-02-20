@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import capacitacionReducer from "./reducer";
+import capacitacionReducer from "../features/capacitaciones/capacitacionSlice";
+import usuarioReducer from "../features/usuarios/usuariosSlice";
 
 export const store = configureStore({
   reducer: {
     capacitacion: capacitacionReducer,
+    usuario: usuarioReducer,
   },
 });
 

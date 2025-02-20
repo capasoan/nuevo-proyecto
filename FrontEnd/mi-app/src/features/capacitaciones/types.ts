@@ -7,6 +7,7 @@ export interface Capacitacion {
 
 export interface CapacitacionState {
   capacitaciones: Capacitacion[];
+  capacitacionID: Capacitacion | null;
   loading: boolean;
   error: string | null;
 }

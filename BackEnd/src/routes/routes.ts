@@ -20,11 +20,14 @@ router.delete("/usuarios/:id", borrarUsuario);
 import {
   crearCapacitaciones,
   getCapacitaciones,
+  getCapacitacionById,
+  eliminarCapacitacion,
 } from "../controllers/capacitacionController";
 
 //Rutas Capacitaciones
 router.post("/crearCapacitaciones", crearCapacitaciones);
+router.get("/capacitacion/:id", getCapacitacionById);
 router.get("/capacitaciones", getCapacitaciones);
-// router.get("/capacitaciones/:id", getCapacitacionById);
+router.delete("/borrarCapacitacione/:id", eliminarCapacitacion);
 
 export default router;

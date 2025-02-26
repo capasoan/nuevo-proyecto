@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 import { Capacitacion } from "../models/Capacitacion";
+import { Leccion } from "../models/Leccion";
+import { Video } from "../models/Video";
+import { Comentario } from "../models/Comentario";
 
 //crear capacitacion
 export const crearCapacitaciones = async (req: Request, res: Response) => {
@@ -33,7 +36,21 @@ export const getCapacitacionById = async (
 ): Promise<void> => {
   const { id } = req.params;
   try {
-    const capacitacion = await Capacitacion.findByPk(id);
+    const capacitacion = await Capacitacion.findByPk(id, {
+      include: [
+        {
+          model: Leccion,
+          include: [
+            {
+              model: Video,
+            },
+            {
+              model: Comentario,
+            },
+          ],
+        },
+      ],
+    });
     console.log("capacitacion", capacitacion);
     if (!capacitacion) {
       res.status(404).json({ error: "capacitacion no encontrads" });

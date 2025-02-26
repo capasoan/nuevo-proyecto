@@ -15,11 +15,7 @@ const Leccion = sequelize.define(
     },
     contenido: {
       type: DataTypes.TEXT,
-      allowNull: false, // Contenido escrito
-    },
-    pdfUrl: {
-      type: DataTypes.STRING, // Enlace a archivos PDF
-      allowNull: true,
+      allowNull: false,
     },
     capacitacionId: {
       type: DataTypes.UUID,

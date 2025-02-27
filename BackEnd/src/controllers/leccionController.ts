@@ -39,3 +39,20 @@ export const getLecciones = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Error al traer las lecciones" });
   }
 };
+
+//Eliminar lecciones
+
+export const eliminarLecciones = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const eliminarLeccion = await Leccion.findByPk(id);
+    if (!eliminarLeccion) {
+      res.status(404).json({ error: "Leccion no encontrado" });
+      return;
+    }
+    await eliminarLeccion.destroy();
+    res.json({ message: "Leccion eliminada" });
+  } catch (error) {
+    res.status(500).json({ error: "Error al eliminar el leccion" });
+  }
+};

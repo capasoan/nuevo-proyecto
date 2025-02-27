@@ -2,11 +2,22 @@ import { Router } from "express";
 
 const router = Router();
 
+//Rutas Videos
+import { cargarVideos, getVideos } from "../controllers/videosController";
+
+router.post("/videos/upload", cargarVideos);
+router.get("/videos", getVideos);
+
 //Rutas Lecciones
-import { crearLecciones, getLecciones } from "../controllers/leccionController";
+import {
+  crearLecciones,
+  getLecciones,
+  eliminarLecciones,
+} from "../controllers/leccionController";
 
 router.post("/crearLecciones", crearLecciones);
 router.get("/lecciones", getLecciones);
+router.delete("/eliminarLecciones/:id", eliminarLecciones);
 
 //Rutas Usuario
 import {

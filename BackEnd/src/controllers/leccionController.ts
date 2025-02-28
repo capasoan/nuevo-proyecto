@@ -40,6 +40,25 @@ export const getLecciones = async (req: Request, res: Response) => {
   }
 };
 
+//Obtener Leccion por id
+
+export const getLeccionById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { id } = req.params;
+  try {
+    const leccionId = await Leccion.findByPk(id);
+    if (!leccionId) {
+      res.status(401).json({ message: "Leccion no encontrafda" });
+      return;
+    }
+    res.json(leccionId);
+  } catch (error) {
+    res.status(500).json({ error: "Error al traer la leccion" });
+  }
+};
+
 //Eliminar lecciones
 
 export const eliminarLecciones = async (req: Request, res: Response) => {

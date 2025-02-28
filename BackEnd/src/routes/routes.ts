@@ -13,11 +13,13 @@ import {
   crearLecciones,
   getLecciones,
   eliminarLecciones,
+  getLeccionById,
 } from "../controllers/leccionController";
 
 router.post("/crearLecciones", crearLecciones);
 router.get("/lecciones", getLecciones);
 router.delete("/eliminarLecciones/:id", eliminarLecciones);
+router.get("/leccion/:id", getLeccionById);
 
 //Rutas Usuario
 import {

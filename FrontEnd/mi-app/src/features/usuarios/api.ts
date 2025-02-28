@@ -5,7 +5,7 @@ export const fetchUsuariosApi = async () => {
       throw new Error("Error al obtener a los usuarios");
     }
     const data = await response.json();
-    console.log("Datos de la API:", data);
+    // console.log("Datos de la API:", data);
     return data;
   } catch (error) {
     console.error("Error en fetchUsuariosApi:", error);

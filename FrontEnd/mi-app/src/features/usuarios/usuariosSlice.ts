@@ -17,7 +17,7 @@ export const fetchUsuarios = createAsyncThunk<Usuario[]>(
   }
 );
 export const fetchUsuarioById = createAsyncThunk<Usuario, string>(
-  "capacitacion/fetchUsuarioById",
+  "usuario/fetchUsuarioById",
   async (id: string) => {
     const response = await fetchUsuarioByIdApi(id);
     return response;
@@ -40,7 +40,7 @@ const usuarioSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchUsuarios.fulfilled, (state, action) => {
-        console.log("Usuarios recibidos:", action.payload);
+        // console.log("Usuarios recibidos:", action.payload);
         state.loading = false;
         state.usuarios = action.payload;
       })

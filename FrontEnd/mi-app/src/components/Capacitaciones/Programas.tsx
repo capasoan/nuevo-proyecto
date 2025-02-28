@@ -3,8 +3,8 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch } from "../app/store";
-import { fetchCapacitaciones } from "../features/capacitaciones/capacitacionSlice";
+import { RootState, AppDispatch } from "../../app/store";
+import { fetchCapacitaciones } from "../../features/capacitaciones/capacitacionSlice";
 
 const Programas = () => {
   const dispatch = useDispatch<AppDispatch>();

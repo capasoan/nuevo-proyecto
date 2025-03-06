@@ -11,6 +11,7 @@ export const DetailCapacitaciones = () => {
   const id = Array.isArray(params?.id) ? params.id[0] : params.id;
   // console.log("ID recibido de la URL:", id);
   const dispatch = useDispatch<AppDispatch>();
+
   const capacitacionID = useSelector(
     (state: RootState) => state.capacitacion.capacitacionID
   );
@@ -23,7 +24,7 @@ export const DetailCapacitaciones = () => {
 
   return (
     <div>
-      <h2>{capacitacionID?.titulo ?? "No se encontró la capacitación"}</h2>
+      <h2>{capacitacionID?.titulo ?? "No se encuentra"}</h2>
       <p>{capacitacionID?.descripcion}</p>
       <p>{capacitacionID?.tipo}</p>
     </div>

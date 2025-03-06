@@ -1,6 +1,7 @@
 "use client";
 import { useNavigate } from "react-router-dom";
 import Lecciones from "./Lecciones/Lecciones";
+import Videos from "./Videos/videos";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Home = () => {
       </button>
       <div>
         <Lecciones />
+        <Videos />
       </div>
     </div>
   );

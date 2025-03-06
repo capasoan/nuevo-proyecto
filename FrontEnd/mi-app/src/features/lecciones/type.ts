@@ -1,5 +1,5 @@
 export interface Leccion {
-  id: number;
+  id: string;
   titulo: string;
   contenido: string;
   capacitacionId: string;

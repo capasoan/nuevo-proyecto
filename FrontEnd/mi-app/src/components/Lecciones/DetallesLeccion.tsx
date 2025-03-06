@@ -1,34 +1,44 @@
-"use client";
-
 import { AppDispatch } from "@/app/store";
 import { fetchLeccionById } from "../../features/lecciones/leccionSlice";
 import { RootState } from "../../app/store";
-import { useParams } from "next/navigation";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 const DetalleLeccion = () => {
-  const params = useParams();
-  const leccionId = params?.id ? String(params.id) : null;
-
-  console.log("ID recibido de la URL:", leccionId);
+  const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch<AppDispatch>();
-  const leccion = useSelector((state: RootState) => state.leccion.leccionID);
 
-  console.log("leccion", leccion);
+  // console.log("ID", id);
+
+  const { leccionID, loading, error } = useSelector(
+    (state: RootState) => state.leccion
+  );
+  // console.log(
+  //   "Estado",
+  //   useSelector((state: RootState) => state.leccion)
+  // );
   useEffect(() => {
-    if (leccionId) {
-      console.log("Llamando a fetchLeccionById con ID:", leccionId);
-      dispatch(fetchLeccionById(leccionId));
+    if (id) {
+      dispatch(fetchLeccionById(id));
     }
-  }, [leccionId, dispatch]);
-  // if (loading) return <p>Cargando...</p>;
-  // if (error) return <p>Error: {error}</p>;
+  }, [dispatch, id]);
+
+  if (loading) return <p>Cargando</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div>
-      <h2>{leccion?.titulo ?? "No se encontró la leccion"}</h2>
-      <p>{leccion?.contenido}</p>
+      <h1>Detalle de la Lección</h1>
+      {leccionID && (
+        <div>
+          <h2>{leccionID.titulo}</h2>
+          <p>{leccionID.contenido}</p>
+          <p>
+            <strong>Capacitación ID:</strong> {leccionID.capacitacionId}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

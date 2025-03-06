@@ -6,6 +6,7 @@ import DetailCapacitaciones from "../components/Capacitaciones/DetailCapacitacio
 import DetallesUsuarios from "@/components/Usuarios/DetallesUsuarios";
 import Programas from "../components/Capacitaciones/Programas";
 import DetallesLeccion from "../components/Lecciones/DetallesLeccion";
+import DetalleVideo from "@/components/Videos/DetalleVideo";
 
 export default function Page() {
   return (
@@ -16,6 +17,7 @@ export default function Page() {
         <Route path="/capacitaciones" element={<Programas />} />
         <Route path="/usuario/:id" element={<DetallesUsuarios />} />
         <Route path="/leccion/:id" element={<DetallesLeccion />} />
+        <Route path="/video/:id" element={<DetalleVideo />} />
       </Routes>
     </Router>
   );

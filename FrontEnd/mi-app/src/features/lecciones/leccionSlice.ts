@@ -1,5 +1,5 @@
 import { Leccion, LeccionState } from "./type";
-import { fetchLeccionesApi, fetchLeccionesApiById } from "./api";
+import { fetchLeccionesApi, fetchLeccionApiById } from "./api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState: LeccionState = {
@@ -10,7 +10,7 @@ const initialState: LeccionState = {
 };
 
 export const fetchLecciones = createAsyncThunk<Leccion[]>(
-  " leccion/fetchLecciones",
+  "leccion/fetchLecciones",
   async () => {
     const response = await fetchLeccionesApi();
     return response;
@@ -20,7 +20,8 @@ export const fetchLecciones = createAsyncThunk<Leccion[]>(
 export const fetchLeccionById = createAsyncThunk<Leccion, string>(
   "leccion/fetchLeccionById",
   async (id: string) => {
-    const response = await fetchLeccionesApiById(id);
+    const response = await fetchLeccionApiById(id);
+    console.log("response", response);
     return response;
   }
 );
@@ -28,7 +29,11 @@ export const fetchLeccionById = createAsyncThunk<Leccion, string>(
 const leccionSlice = createSlice({
   name: "leccion",
   initialState,
-  reducers: {},
+  reducers: {
+    clearError(state) {
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       //Lecciones
@@ -51,7 +56,7 @@ const leccionSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchLeccionById.fulfilled, (state, action) => {
-        console.log("Datos recibidos de API:", action.payload);
+        console.log("Datos recibidos de API en Redux:", action.payload);
         state.loading = false;
         state.leccionID = action.payload;
       })
@@ -62,5 +67,7 @@ const leccionSlice = createSlice({
       });
   },
 });
+
+export const { clearError } = leccionSlice.actions;
 
 export default leccionSlice.reducer;

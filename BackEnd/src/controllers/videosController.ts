@@ -7,14 +7,14 @@ export const cargarVideos = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { url, LeccionId } = req.body;
+    const { url, nombre, LeccionId } = req.body;
 
-    if (!url || !LeccionId) {
+    if (!url || !nombre || !LeccionId) {
       res.status(400).json({ error: "URL y LeccionId son requeridos" });
       return;
     }
 
-    const nuevoVideo = await Video.create({ url, LeccionId });
+    const nuevoVideo = await Video.create({ url, nombre, LeccionId });
 
     res
       .status(201)
@@ -32,5 +32,24 @@ export const getVideos = async (req: Request, res: Response) => {
     res.json(traerVideos);
   } catch (error) {
     res.status(500).json({ error: "error al obtener los videos" });
+  }
+};
+
+//Obtener video por id
+
+export const getVideoById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { id } = req.params;
+  try {
+    const videoID = await Video.findByPk(id);
+    if (!videoID) {
+      res.status(401).json({ message: "Leccion no encontrafda" });
+      return;
+    }
+    res.json(videoID);
+  } catch (error) {
+    res.status(500).json({ error: "Error al traer la leccion" });
   }
 };

@@ -9,6 +9,10 @@ const Video = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     url: {
       type: DataTypes.STRING,
       allowNull: false,

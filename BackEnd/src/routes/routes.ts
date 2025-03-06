@@ -3,10 +3,15 @@ import { Router } from "express";
 const router = Router();
 
 //Rutas Videos
-import { cargarVideos, getVideos } from "../controllers/videosController";
+import {
+  cargarVideos,
+  getVideoById,
+  getVideos,
+} from "../controllers/videosController";
 
 router.post("/videos/upload", cargarVideos);
 router.get("/videos", getVideos);
+router.get("/videos/:id", getVideoById);
 
 //Rutas Lecciones
 import {
